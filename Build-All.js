@@ -6,11 +6,7 @@ gulp.task('Build-All', callback => runSequence(
   'Build-Solution',
   [
     'Run-Webpack',
-    'Publish-Configs',
-    'Publish-Views',
-    'Publish-Serialisation',
-    'Publish-Binaries',
-    'Publish-Scripts'
+    'Publish'
   ],
 
   callback
