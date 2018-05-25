@@ -8,7 +8,8 @@ gulp.task('Publish', callback => runSequence(
     'Publish-Views',
     'Publish-Serialisation',
     'Publish-Sitecore-Modules',
-    'Publish-Binaries'
+    'Publish-Binaries',
+    'Publish-XConnectModels'
   ],
 
   callback
