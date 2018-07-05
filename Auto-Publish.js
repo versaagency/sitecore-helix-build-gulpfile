@@ -65,10 +65,13 @@ gulp.task('Auto-Publish-Binaries', () =>
     'bin'
   ))
 
+gulp.task('Auto-Publish-Sitecore-Modules', () =>
+  watchFolder([`${sourceRoot}/{Foundation,Feature,Project}/*/code/**/sitecore/**/*`], 'sitecore'))
+
 gulp.task('Auto-Publish-Configs', () =>
   watchFolder(
     [`${sourceRoot}/{Foundation,Feature,Project}/*/code/App_Config/**/*.config`],
     'App_Config'
   ))
 
-gulp.task('Auto-Publish', ['Auto-Publish-Views', 'Auto-Publish-Binaries', 'Auto-Publish-Configs', 'Auto-Publish-Scripts'])
+gulp.task('Auto-Publish', ['Auto-Publish-Views', 'Auto-Publish-Binaries', 'Auto-Publish-Configs', 'Auto-Publish-Scripts', 'Auto-Publish-Sitecore-Modules'])
