@@ -7,7 +7,7 @@ const { config } = require('./config')
 
 gulp.task('Publish-Sitecore-Modules', () => {
   const root = './src'
-  const roots = [`${root}/**/sitecore/*`]
+  const roots = [`${root}/**/sitecore`]
 
   const files = '/./**/*'
   const destination = path.join(config.websiteRoot, 'sitecore')
