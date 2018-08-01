@@ -5,7 +5,7 @@ const path = require('path')
 const { config } = require('./config')
 const sitecoreBinaries = require('./data/Sitecore-Binaries')
 
-gulp.task('Publish-Binaries', ['Clean-Binaries'], () => {
+gulp.task('Publish-Binaries', gulp.series('Clean-Binaries', () => {
   const root = './src'
   const binFiles = [
     `${root}/**/code/bin/*`,
@@ -19,4 +19,4 @@ gulp.task('Publish-Binaries', ['Clean-Binaries'], () => {
     .pipe(rename({ dirname: '' }))
     .pipe(debug({ title: 'Copying ' }))
     .pipe(gulp.dest(destination))
-})
+}))

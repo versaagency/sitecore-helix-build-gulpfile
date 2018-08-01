@@ -74,4 +74,4 @@ gulp.task('Auto-Publish-Configs', () =>
     'App_Config'
   ))
 
-gulp.task('Auto-Publish', ['Auto-Publish-Views', 'Auto-Publish-Binaries', 'Auto-Publish-Configs', 'Auto-Publish-Scripts', 'Auto-Publish-Sitecore-Modules'])
+gulp.task('Auto-Publish', gulp.parallel('Auto-Publish-Views', 'Auto-Publish-Binaries', 'Auto-Publish-Configs', 'Auto-Publish-Scripts', 'Auto-Publish-Sitecore-Modules'))

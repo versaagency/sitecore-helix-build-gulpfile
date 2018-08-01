@@ -10,7 +10,7 @@ gulp.task('Build-XConnect-Models', () => {
   execSync(`cmd.exe src\\Utilities\\XConnect.ModelBuilder\\bin\\${config.buildConfiguration}\\XConnect.ModelBuilder.exe`)
 })
 
-gulp.task('Publish-XConnect-Models', ['Build-XConnect-Models'], () => {
+gulp.task('Publish-XConnect-Models', gulp.series('Build-XConnect-Models', () => {
   const root = `./src/Utilities/XConnect.ModelBuilder/bin/${config.buildConfiguration}/Models`
 
   const destination = [
@@ -25,4 +25,4 @@ gulp.task('Publish-XConnect-Models', ['Build-XConnect-Models'], () => {
   destination.forEach(ent => stream.pipe(gulp.dest(ent)))
 
   return stream
-})
+}))
