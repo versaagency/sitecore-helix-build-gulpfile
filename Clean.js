@@ -32,4 +32,4 @@ gulp.task('Clean-Binaries', (callback) => {
   })
 })
 
-gulp.task('Clean', ['Clean-Binaries', 'Clean-Configs'])
+gulp.task('Clean', gulp.parallel('Clean-Binaries', 'Clean-Configs'))

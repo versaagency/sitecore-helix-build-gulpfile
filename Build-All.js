@@ -1,13 +1,9 @@
 const gulp = require('gulp')
-const runSequence = require('run-sequence')
 
-gulp.task('Build-All', callback => runSequence(
+gulp.task('Build-All', gulp.series(
   'NuGet-Restore',
   'Build-Solution',
-  [
+  gulp.parallel(
     'Run-Webpack',
     'Publish'
-  ],
-
-  callback
-))
+  )))

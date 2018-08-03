@@ -5,7 +5,7 @@ const changed = require('gulp-changed')
 const path = require('path')
 const { config } = require('./config')
 
-gulp.task('Publish-Configs', ['Clean-Configs'], () => {
+gulp.task('Publish-Configs', gulp.series('Clean-Configs', () => {
   const root = './src'
   const roots = [
     `${root}/**/App_Config`,
@@ -32,4 +32,4 @@ gulp.task('Publish-Configs', ['Clean-Configs'], () => {
         .pipe(gulp.dest(destination))
       return stream
     }))
-})
+}))

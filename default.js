@@ -1,3 +1,3 @@
 const gulp = require('gulp')
 
-gulp.task('default', ['Auto-Publish', 'Develop-Assets'])
+gulp.task('default', gulp.parallel('Auto-Publish', 'Develop-Assets'))
