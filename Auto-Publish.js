@@ -2,6 +2,7 @@ const gulp = require('gulp')
 const watch = require('gulp-watch')
 const rimraf = require('rimraf')
 const fs = require('fs')
+const _path = require('path')
 const {
   config
 } = require('./config')
@@ -14,9 +15,9 @@ gulp.task('Auto-Publish', () => {
     path,
     event
   }) => {
-    const parts = path.split('/')
+    const parts = path.split(_path.sep)
     const fileName = parts[parts.length - 1]
-    const base = parts.filter((_, index) => index <= parts.indexOf('code')).join('/')
+    const base = parts.filter((_, index) => index <= parts.indexOf('code')).join(_path.sep)
     const destPath = `${config.websiteRoot}${path.substr(base.length)}`
 
     if (sitecoreBinaries.indexOf(fileName) !== -1) {
