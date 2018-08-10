@@ -31,7 +31,7 @@ gulp.task('Auto-Publish', () => {
           fs.copyFileSync(path, destPath)
           break
         case 'unlink':
-          console.log(`Removing: ${destPath}`)
+          console.log(`Removing: ${fileName}`)
 
           rimraf(destPath, () => {})
           break
