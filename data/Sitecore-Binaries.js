@@ -241,6 +241,7 @@ module.exports = [
   'Sitecore.Web.dll',
   'Sitecore.XConnect.Client.Configuration.dll',
   'Sitecore.XConnect.Client.dll',
+  'Sitecore.XConnect.Collection.Model.dll',
   'Sitecore.XConnect.Connection.Model.dll',
   'Sitecore.XConnect.dll',
   'Sitecore.Xdb.Client.dll',
