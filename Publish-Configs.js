@@ -5,7 +5,7 @@ const changed = require('gulp-changed')
 const path = require('path')
 const { config } = require('./config')
 
-gulp.task('Publish-Configs', gulp.series('Clean-Configs', () => {
+gulp.task('Publish-Configs', gulp.series(() => {
   const root = './src'
   const roots = [
     `${root}/**/App_Config`,
