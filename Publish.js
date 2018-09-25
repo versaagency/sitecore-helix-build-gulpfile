@@ -1,9 +1,26 @@
 const gulp = require('gulp')
+const debug = require('gulp-debug')
 const foreach = require('gulp-foreach')
 const newer = require('gulp-newer')
-const debug = require('gulp-debug')
 const { config } = require('./config')
 const sitecoreBinaries = require('./data/Sitecore-Binaries')
+
+gulp.task('Publish-Unicorn', () => {
+  const roots = './src/{Project,Feature,Foundation}/*/serialization'
+  const files = '/**/*'
+  const destination = config.serializationPath
+
+  return gulp.src(roots).pipe(
+    foreach((stream, file) => {
+      gulp
+        .src([file.path + files], { base: file.path })
+        .pipe(newer(destination))
+        .pipe(debug({ title: 'Copying' }))
+        .pipe(gulp.dest(destination))
+      return stream
+    })
+  )
+})
 
 gulp.task('Publish-Helix', () => {
   const roots = './src/{Project,Feature,Foundation}/*/code/'
@@ -23,4 +40,4 @@ gulp.task('Publish-Helix', () => {
   )
 })
 
-gulp.task('Publish', gulp.parallel(['Run-Webpack', 'Publish-Helix']))
+gulp.task('Publish', gulp.parallel(['Run-Webpack', 'Publish-Helix', 'Publish-Unicorn']))
