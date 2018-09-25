@@ -6,20 +6,14 @@ const { config } = require('./config')
 const sitecoreBinaries = require('./data/Sitecore-Binaries')
 
 gulp.task('Publish-Unicorn', () => {
-  const roots = './src/{Project,Feature,Foundation}/*/serialization'
-  const files = '/**/*'
+  const roots = './src/{Project,Feature,Foundation}/*/serialization/**/*'
   const destination = config.serializationPath
 
-  return gulp.src(roots).pipe(
-    foreach((stream, file) => {
-      gulp
-        .src([file.path + files], { base: file.path })
-        .pipe(newer(destination))
-        .pipe(debug({ title: 'Copying' }))
-        .pipe(gulp.dest(destination))
-      return stream
-    })
-  )
+  return gulp
+    .src(roots)
+    .pipe(newer(destination))
+    .pipe(debug({ title: 'Copying' }))
+    .pipe(gulp.dest(destination))
 })
 
 gulp.task('Publish-Helix', () => {
