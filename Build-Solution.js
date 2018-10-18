@@ -5,8 +5,8 @@ const { config } = require('./config')
 gulp.task('Build-Solution', () => {
   const solution = `./${config.solutionFile}`
   const targets = config.runCleanBuilds
-    ? ['Build']
-    : ['Clean', 'Build']
+    ? ['Clean', 'Build']
+    : ['Build']
 
   return gulp.src(solution)
     .pipe(msbuild({
